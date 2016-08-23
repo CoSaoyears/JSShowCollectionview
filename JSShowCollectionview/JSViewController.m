@@ -2,7 +2,7 @@
 //  JSViewController.m
 //  JSShowCollectionview
 //
-//  Created by 张喜 on 16/8/23.
+//  Created by JS on 16/8/23.
 //  Copyright © 2016年 zhang.com. All rights reserved.
 //
 

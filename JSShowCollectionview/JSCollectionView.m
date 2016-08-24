@@ -27,7 +27,7 @@
     
     JSCollectionView *jsCv=[[JSCollectionView alloc]initWithFrame:CGRectMake(0,ScrollView.frame.origin.y+ScrollView.frame.size.height,screenW, screenH) collectionViewLayout:flowLayout];
     
-    [jsCv registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
+    [jsCv registerClass:registerCell forCellWithReuseIdentifier:reuseIdentifier];
     
     jsCv.showsHorizontalScrollIndicator=NO;
     jsCv.pagingEnabled=YES;

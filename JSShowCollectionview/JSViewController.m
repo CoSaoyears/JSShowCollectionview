@@ -30,11 +30,18 @@
     
     NSArray *channelAyyay=@[@"要 闻",@"治 理"];
     
-    self.JSManager=[JSViewManager managerWithChannelAyyay:channelAyyay];
-    self.JSManager.frame=CGRectMake(0,64, screenW, screenH-64);
-    self.JSManager.layoutStyle=JSLayoutCenter;
-    [self.JSManager CollectionViewManager];
-    [self.view addSubview:self.JSManager];
+//    self.JSManager=[JSViewManager managerWithChannelAyyay:channelAyyay];
+//    self.JSManager.frame=CGRectMake(0,64, screenW, screenH-64);
+//    self.JSManager.layoutStyle=JSLayoutCenter;
+//    [self.JSManager CollectionViewManager];
+//    [self.view addSubview:self.JSManager];
+    
+    JSViewManager *JSManager=[JSViewManager managerWithChannelAyyay:channelAyyay];
+    JSManager.frame=CGRectMake(0,64, screenW, screenH-64);
+    JSManager.layoutStyle=JSLayoutCenter;
+    [JSManager CollectionViewManager];
+    [self.view addSubview:JSManager];
+
 }
 
 

@@ -19,6 +19,7 @@
 
 #define reuseIdentifier @"Cell"
 
+#define registerCell [UICollectionViewCell class]
 
 
 

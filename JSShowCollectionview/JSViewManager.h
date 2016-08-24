@@ -12,6 +12,7 @@
 
 #define btnNormalColor  [UIColor colorWithRed:73/255.0 green:74/255.0 blue:74/255.0 alpha:1]
 #define btnSelectedColor [UIColor colorWithRed:0/255.0 green:151/255.0 blue:224/255.0 alpha:1]
+#define btnBackgColor [UIColor whiteColor]
 typedef NS_OPTIONS(NSInteger, JSLayoutStyle) {
     JSLayoutNone                     = 0,
     JSLayoutCenter     = 1 << 1,

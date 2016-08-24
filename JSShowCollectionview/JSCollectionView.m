@@ -7,7 +7,7 @@
 //
 
 #import "JSCollectionView.h"
-
+#import "JSViewManager.h"
 @interface JSCollectionView () <UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
 @end
@@ -48,10 +48,17 @@
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     
+
+    JSViewManager *JSm=(JSViewManager *)self.superview;
+    if ([JSm.delegate respondsToSelector:@selector(JSCollectionView:cellForItemAtIndexPath:)]) {
+       return [JSm.delegate JSCollectionView:collectionView cellForItemAtIndexPath:indexPath];
+    }
+    
+    
     UICollectionViewCell *cell=[collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     
-     UITableView *tableView=[[UITableView alloc]init];
-    tableView.frame=CGRectMake(0, 0, screenW, screenH);
+    UITableView *tableView=[[UITableView alloc]init];
+    tableView.frame=self.bounds;
     tableView.backgroundColor=[UIColor colorWithRed:arc4random_uniform(255)/255.0 green:arc4random_uniform(255)/255.0 blue:arc4random_uniform(255)/255.0 alpha:1];
     [cell addSubview:tableView];
     

@@ -18,6 +18,14 @@ typedef NS_OPTIONS(NSInteger, JSLayoutStyle) {
     JSLayoutCenter     = 1 << 1,
 };
 
+
+@protocol JSViewManagerDelegate <NSObject>
+
+-(UICollectionViewCell *)JSCollectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath;
+
+@end
+
+
 @interface JSViewManager : UIView 
 
 +(instancetype)managerWithChannelAyyay:(NSArray *)channelAyyay;
@@ -37,4 +45,6 @@ typedef NS_OPTIONS(NSInteger, JSLayoutStyle) {
 @property (nonatomic,strong)JSCollectionView *JSColleView;
 
 @property (nonatomic,assign)JSLayoutStyle  layoutStyle;
+
+@property (nonatomic,weak)id <JSViewManagerDelegate> delegate;
 @end

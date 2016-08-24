@@ -10,7 +10,7 @@
 #import "JSCollectionView.h"
 #import "JSViewManager.h"
 
-@interface JSViewController ()
+@interface JSViewController () <JSViewManagerDelegate>
 @property (nonatomic,strong)JSCollectionView *JSColleView;
 
 @property (nonatomic,strong)JSViewManager *JSManager;
@@ -39,9 +39,19 @@
     JSViewManager *JSManager=[JSViewManager managerWithChannelAyyay:channelAyyay];
     JSManager.frame=CGRectMake(0,64, screenW, screenH-64);
     JSManager.layoutStyle=JSLayoutCenter;
+    JSManager.delegate=self;
     [JSManager CollectionViewManager];
     [self.view addSubview:JSManager];
 
+}
+
+-(UICollectionViewCell *)JSCollectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    
+        UICollectionViewCell *cell=[collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+    
+        cell.backgroundColor=[UIColor colorWithRed:arc4random_uniform(255)/255.0 green:arc4random_uniform(255)/255.0 blue:arc4random_uniform(255)/255.0 alpha:1];
+    
+        return cell;
 }
 
 

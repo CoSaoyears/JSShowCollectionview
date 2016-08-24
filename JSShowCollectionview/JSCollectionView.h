@@ -67,10 +67,5 @@
 @end
 
 
-@interface JSView : UIView
-
-
-@end
-
 
 

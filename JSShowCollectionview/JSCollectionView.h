@@ -17,7 +17,7 @@
 #define screenW [UIScreen mainScreen].bounds.size.width
 #define screenH [UIScreen mainScreen].bounds.size.height
 
-#define reuseIdentifier @"Cell"
+#define identifier @"Cell"
 
 #define registerCell [UICollectionViewCell class]
 

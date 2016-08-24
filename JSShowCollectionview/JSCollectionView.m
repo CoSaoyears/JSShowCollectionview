@@ -8,7 +8,7 @@
 
 #import "JSCollectionView.h"
 #import "JSViewManager.h"
-@interface JSCollectionView () <UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
+@interface JSCollectionView () <UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UITableViewDelegate,UITableViewDataSource>
 
 @end
 
@@ -27,7 +27,7 @@
     
     JSCollectionView *jsCv=[[JSCollectionView alloc]initWithFrame:CGRectMake(0,ScrollView.frame.origin.y+ScrollView.frame.size.height,screenW, screenH) collectionViewLayout:flowLayout];
     
-    [jsCv registerClass:registerCell forCellWithReuseIdentifier:reuseIdentifier];
+    [jsCv registerClass:registerCell forCellWithReuseIdentifier:identifier];
     
     jsCv.showsHorizontalScrollIndicator=NO;
     jsCv.pagingEnabled=YES;
@@ -55,13 +55,17 @@
     }
     
     
-    UICollectionViewCell *cell=[collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+    UICollectionViewCell *cell=[collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
     
     UITableView *tableView=[[UITableView alloc]init];
-    tableView.frame=self.bounds;
+    tableView.frame=CGRectMake(0, 0,self.bounds.size.width, self.bounds.size.height);
+    tableView.delegate=self;
+    tableView.dataSource=self;
+    tableView.tableFooterView=[UIView new];
     tableView.backgroundColor=[UIColor colorWithRed:arc4random_uniform(255)/255.0 green:arc4random_uniform(255)/255.0 blue:arc4random_uniform(255)/255.0 alpha:1];
-    [cell addSubview:tableView];
+    [cell.contentView addSubview:tableView];
     
+    ZXLog(@"%@",tableView);
     return cell;
 }
 
@@ -97,7 +101,8 @@
 //定义每个UICollectionViewCell 的大小
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return CGSizeMake(screenW,screenH);
+//    return CGSizeMake(screenW,screenH);
+    return self.frame.size;
     
 }
 
@@ -125,6 +130,22 @@
 -(void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath{
     ZXLog(@"okoko");
     
+}
+
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return self.channelAyyay.count;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"tableReuserId"];
+    if (!cell) {
+        cell=[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"tableReuserId"];
+    }
+    
+    cell.textLabel.text=[NSString stringWithFormat:@"%zd",indexPath.row];
+    
+    return cell;
 }
 
 

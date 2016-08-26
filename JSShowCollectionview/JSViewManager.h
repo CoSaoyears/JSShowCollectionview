@@ -47,4 +47,5 @@ typedef NS_OPTIONS(NSInteger, JSLayoutStyle) {
 @property (nonatomic,assign)JSLayoutStyle  layoutStyle;
 
 @property (nonatomic,weak)id <JSViewManagerDelegate> delegate;
+
 @end

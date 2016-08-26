@@ -28,7 +28,7 @@
     
     self.automaticallyAdjustsScrollViewInsets=NO;
     
-    NSArray *channelAyyay=@[@"要 闻",@"治 理"];
+    NSArray *channelAyyay=@[@"要 闻",@"治 理",@"呵呵呵",@"呵呵呵呵",@"哈哈呵呵呵",@"哈哈呵呵呵呵呵呵",@"哈哈呵呵呵哈哈哈哈哈哈哈哈哈哈哈"];
     
 //    self.JSManager=[JSViewManager managerWithChannelAyyay:channelAyyay];
 //    self.JSManager.frame=CGRectMake(0,64, screenW, screenH-64);
@@ -38,7 +38,7 @@
     
     JSViewManager *JSManager=[JSViewManager managerWithChannelAyyay:channelAyyay];
     JSManager.frame=CGRectMake(0,64, screenW, screenH-64);
-    JSManager.layoutStyle=JSLayoutCenter;
+    JSManager.layoutStyle=JSLayoutNone;
 //    JSManager.delegate=self;
     [JSManager CollectionViewManager];
     [self.view addSubview:JSManager];

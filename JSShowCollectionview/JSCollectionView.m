@@ -65,7 +65,7 @@
     tableView.backgroundColor=[UIColor colorWithRed:arc4random_uniform(255)/255.0 green:arc4random_uniform(255)/255.0 blue:arc4random_uniform(255)/255.0 alpha:1];
     [cell.contentView addSubview:tableView];
     
-    ZXLog(@"%@",tableView);
+
     return cell;
 }
 
@@ -77,6 +77,11 @@
     
     NSArray *array=[self.collectionView indexPathsForVisibleItems];
     
+    if ([self.jSdelegate respondsToSelector:@selector(JSScrollViewDidScroll:)]) {
+        [self.jSdelegate JSScrollViewDidScroll:scrollView];
+    }
+//    ZXLog(@"%@",scrollView);
+  
     for (NSIndexPath *indexPath in array) {
         if (indexPath.item !=self.currentIndex) {
             nextBtn=self.scrollView.subviews[indexPath.item];

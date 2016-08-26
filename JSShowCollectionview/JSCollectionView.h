@@ -26,6 +26,7 @@
 @protocol JSCollectionViewDelegate <NSObject>
 
 -(void)JSCollectionViewDidEndDecelerating:(UIScrollView *)scrollView;
+-(void)JSScrollViewDidScroll:(UIScrollView *)scrollView;
 
 @end
 

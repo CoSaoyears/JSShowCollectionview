@@ -27,6 +27,7 @@
 		3307C3211D6BF3C300A60BAA /* JSViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3307C3201D6BF3C300A60BAA /* JSViewManager.m */; };
 		3307C3221D6BF3C300A60BAA /* JSViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3307C3201D6BF3C300A60BAA /* JSViewManager.m */; };
 		3307C3231D6BF3C300A60BAA /* JSViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3307C3201D6BF3C300A60BAA /* JSViewManager.m */; };
+		338797451D7007F600815D10 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 338797441D7007F600815D10 /* UIView+Extension.m */; };
 		33D804311D6C4D8100B2C9FB /* JSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33D804301D6C4D8100B2C9FB /* JSViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -72,6 +73,8 @@
 		3307C31B1D6BF35700A60BAA /* JSChannelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSChannelView.m; sourceTree = "<group>"; };
 		3307C31F1D6BF3C300A60BAA /* JSViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSViewManager.h; sourceTree = "<group>"; };
 		3307C3201D6BF3C300A60BAA /* JSViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSViewManager.m; sourceTree = "<group>"; };
+		338797431D7007F600815D10 /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
+		338797441D7007F600815D10 /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
 		33D8042F1D6C4D8100B2C9FB /* JSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSViewController.h; sourceTree = "<group>"; };
 		33D804301D6C4D8100B2C9FB /* JSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -132,6 +135,8 @@
 				33D804301D6C4D8100B2C9FB /* JSViewController.m */,
 				3307C31F1D6BF3C300A60BAA /* JSViewManager.h */,
 				3307C3201D6BF3C300A60BAA /* JSViewManager.m */,
+				338797431D7007F600815D10 /* UIView+Extension.h */,
+				338797441D7007F600815D10 /* UIView+Extension.m */,
 				3307C3101D6BF29900A60BAA /* JSCollectionView.h */,
 				3307C3111D6BF29900A60BAA /* JSCollectionView.m */,
 				3307C31A1D6BF35700A60BAA /* JSChannelView.h */,
@@ -303,6 +308,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				338797451D7007F600815D10 /* UIView+Extension.m in Sources */,
 				3307C2E51D6BF28100A60BAA /* ViewController.m in Sources */,
 				33D804311D6C4D8100B2C9FB /* JSViewController.m in Sources */,
 				3307C31C1D6BF35700A60BAA /* JSChannelView.m in Sources */,

@@ -7,7 +7,7 @@
 //
 
 #import "JSViewManager.h"
-
+#import "UIView+Extension.h"
 @interface JSViewManager ()<JSCollectionViewDelegate>
 
 
@@ -34,7 +34,6 @@
     scrollView.layer.borderColor=[[UIColor colorWithRed:205/255.0 green:205/255.0 blue:205/255.0 alpha:1] CGColor];
 
     CGFloat count =_channelAyyay.count;
-    
     
     for (int i=0; i< count; i++) {
         
@@ -70,6 +69,7 @@
         
     }
     
+    
     self.scrollView.contentSize = CGSizeMake(self.topBtn.frame.origin.x+self.topBtn.frame.size.width, scrollViewH);
     self.scrollView.showsHorizontalScrollIndicator = NO;
     JSChannelView *first = self.scrollView.subviews[0];
@@ -101,6 +101,16 @@
     [self.JSColleView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:tag inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
 }
 
+/**
+ *  正在滚动
+ */
+-(void)JSScrollViewDidScroll:(UIScrollView *)scrollView{
+    if (self.layoutStyle==JSLayoutNone) {
+        
+    }else if (self.layoutStyle==JSLayoutCenter){
+//        self.lineView.x=scrollView.contentOffset.x/self.channelAyyay.count;
+    }
+}
 
 -(void)JSCollectionViewDidEndDecelerating:(UIScrollView *)scrollView{
     
@@ -124,7 +134,6 @@
     
 
 }
-
 
 
 

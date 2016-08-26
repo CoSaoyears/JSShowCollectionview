@@ -38,7 +38,7 @@
     
     JSViewManager *JSManager=[JSViewManager managerWithChannelAyyay:channelAyyay];
     JSManager.frame=CGRectMake(0,64, screenW, screenH-64);
-    JSManager.layoutStyle=JSLayoutNone;
+    JSManager.layoutStyle=JSLayoutCenter;
 //    JSManager.delegate=self;
     [JSManager CollectionViewManager];
     [self.view addSubview:JSManager];

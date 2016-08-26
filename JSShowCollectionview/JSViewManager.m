@@ -26,6 +26,8 @@
 -(void)CollectionViewManager{
     
     CGFloat  scrollViewH=48;
+    self.lineH=2;
+    self.lineColor=[UIColor redColor];
     
     UIScrollView *scrollView=[[UIScrollView alloc]initWithFrame:CGRectMake(0,0, screenW, scrollViewH)];
     self.scrollView=scrollView;
@@ -56,19 +58,28 @@
         
         topBtn.backgroundColor =btnBackgColor;
         
-        
         [self.scrollView addSubview:topBtn];
         
         [topBtn addTarget:self action:@selector(backgroundBtn:) forControlEvents:UIControlEventTouchUpInside];
         
-        topBtn.frame = CGRectMake(btnW * i, 0, btnW, scrollViewH);
-        
+        topBtn.frame = CGRectMake(self.topBtn.frame.size.width+self.topBtn.frame.origin.x, 0, btnW, scrollViewH);
+    
         
         self.topBtn=topBtn;
         
         
     }
     
+    
+    
+    JSChannelView *currentBtn=self.scrollView.subviews[self.currentIndex];
+    
+    UIView *lineView=[[UIView alloc]init];
+    _lineView=lineView;
+    lineView.frame=CGRectMake(0, scrollViewH-self.lineH, currentBtn.size.width, self.lineH);
+    lineView.backgroundColor=self.lineColor;
+    [self.scrollView addSubview:lineView];
+
     
     self.scrollView.contentSize = CGSizeMake(self.topBtn.frame.origin.x+self.topBtn.frame.size.width, scrollViewH);
     self.scrollView.showsHorizontalScrollIndicator = NO;
@@ -106,9 +117,11 @@
  */
 -(void)JSScrollViewDidScroll:(UIScrollView *)scrollView{
     if (self.layoutStyle==JSLayoutNone) {
+
+
         
     }else if (self.layoutStyle==JSLayoutCenter){
-//        self.lineView.x=scrollView.contentOffset.x/self.channelAyyay.count;
+        self.lineView.x=scrollView.contentOffset.x/self.channelAyyay.count;
     }
 }
 
@@ -121,7 +134,7 @@
         self.currentIndex=currentIndex;
         
         JSChannelView *currentBtn=self.scrollView.subviews[self.currentIndex];
-        
+        self.lineView.width=currentBtn.size.width;
         [currentBtn setSelected:YES];
         currentBtn.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"activity_card_bj3"]];
         self.preBtn.backgroundColor =[UIColor whiteColor];

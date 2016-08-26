@@ -29,13 +29,21 @@ typedef NS_OPTIONS(NSInteger, JSLayoutStyle) {
 @interface JSViewManager : UIView 
 
 +(instancetype)managerWithChannelAyyay:(NSArray *)channelAyyay;
-
+/**
+ *  创建管理类
+ */
 -(void)CollectionViewManager;
-
+/**
+ *  头部数据
+ */
 @property (nonatomic,strong)NSArray *channelAyyay;
-
+/**
+ *  滑动的scrollView
+ */
 @property (nonatomic,weak)UIScrollView *scrollView;
-
+/**
+ *  滑动的下标
+ */
 @property (nonatomic, assign) NSInteger currentIndex;
 
 @property (nonatomic,weak)UIButton *topBtn;
@@ -43,9 +51,24 @@ typedef NS_OPTIONS(NSInteger, JSLayoutStyle) {
 @property (nonatomic, weak) UIButton  *preBtn;
 
 @property (nonatomic,strong)JSCollectionView *JSColleView;
-
+/**
+ *  控制滑动方式
+ */
 @property (nonatomic,assign)JSLayoutStyle  layoutStyle;
 
 @property (nonatomic,weak)id <JSViewManagerDelegate> delegate;
+
+/**
+ *  滑动的View
+ */
+@property (nonatomic,weak)UIView *lineView;
+/**
+ *  滑动线高
+ */
+@property (nonatomic,assign)CGFloat lineH;
+/**
+ *  滑动线颜色
+ */
+@property (nonatomic,weak)UIColor *lineColor;
 
 @end

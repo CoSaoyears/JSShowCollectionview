@@ -21,14 +21,18 @@
 @implementation JSViewController
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //    self.JSColleView=[JSCollectionView JSManagementCollectionView];
-    //    [self.view addSubview:self.JSColleView];
-    //    self.view.backgroundColor=[UIColor purpleColor];
+    
+        NSArray *channelAyyay=@[@"要 闻",@"治 理",@"呵呵呵",@"呵呵呵呵",@"哈哈呵呵呵",@"哈哈呵呵呵呵呵呵",@"哈哈呵呵呵哈哈哈哈哈哈哈哈哈哈哈"];
+    
+//        self.JSColleView=[JSCollectionView JSManagementCollectionView];
+//        self.JSColleView.channelAyyay=channelAyyay;
+//        [self.view addSubview:self.JSColleView];
+//        self.view.backgroundColor=[UIColor purpleColor];
     
     
-    self.automaticallyAdjustsScrollViewInsets=NO;
+//    self.automaticallyAdjustsScrollViewInsets=NO;
     
-    NSArray *channelAyyay=@[@"要 闻",@"治 理",@"呵呵呵",@"呵呵呵呵",@"哈哈呵呵呵",@"哈哈呵呵呵呵呵呵",@"哈哈呵呵呵哈哈哈哈哈哈哈哈哈哈哈"];
+
     
 //    self.JSManager=[JSViewManager managerWithChannelAyyay:channelAyyay];
 //    self.JSManager.frame=CGRectMake(0,64, screenW, screenH-64);
@@ -37,7 +41,7 @@
 //    [self.view addSubview:self.JSManager];
     
     JSViewManager *JSManager=[JSViewManager managerWithChannelAyyay:channelAyyay];
-    JSManager.frame=CGRectMake(0,64, screenW, screenH-64);
+    JSManager.frame=CGRectMake(0,0, screenW, screenH);
     JSManager.layoutStyle=JSLayoutNone;
 //    JSManager.delegate=self;
     [JSManager CollectionViewManager];

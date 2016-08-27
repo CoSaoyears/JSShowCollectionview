@@ -48,12 +48,12 @@
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     
-
-    JSViewManager *JSm=(JSViewManager *)self.superview;
-    if ([JSm.delegate respondsToSelector:@selector(JSCollectionView:cellForItemAtIndexPath:)]) {
-       return [JSm.delegate JSCollectionView:collectionView cellForItemAtIndexPath:indexPath];
+    if ([@"JSViewManager" isEqual:NSStringFromClass([self.superview class])]) {
+        JSViewManager *JSm=(JSViewManager *)self.superview;
+        if ([JSm.delegate respondsToSelector:@selector(JSCollectionView:cellForItemAtIndexPath:)]) {
+            return [JSm.delegate JSCollectionView:collectionView cellForItemAtIndexPath:indexPath];
+        }
     }
-    
     
     UICollectionViewCell *cell=[collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
     

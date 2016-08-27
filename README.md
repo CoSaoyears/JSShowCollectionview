@@ -1,1 +1,2 @@
-# JSShowCollectionview
+# JSShowCollectionview 新闻展示
+

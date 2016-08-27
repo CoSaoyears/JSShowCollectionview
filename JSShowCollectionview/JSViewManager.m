@@ -121,31 +121,35 @@
 
         
 //    }else if (self.layoutStyle==JSLayoutCenter){
-        self.lineView.x=scrollView.contentOffset.x/self.channelAyyay.count;
+
+    self.lineView.x=scrollView.contentOffset.x/self.channelAyyay.count;
 //    }
 }
 #define screenW [UIScreen mainScreen].bounds.size.width
 -(void)JSCollectionViewDidEndDecelerating:(UIScrollView *)scrollView{
     
 //    [UIView animateWithDuration:3 animations:^{
-       NSInteger currentIndex =scrollView.contentOffset.x / scrollView.bounds.size.width;
     
-    if (self.currentIndex!=currentIndex) {
-        self.currentIndex=currentIndex;
+        NSInteger currentIndex =scrollView.contentOffset.x / scrollView.bounds.size.width;
         
-        JSChannelView *currentBtn=self.scrollView.subviews[self.currentIndex];
-        self.lineView.width=currentBtn.width;
-        self.lineView.x=currentBtn.x;
-        if (currentBtn.x>screenW) {
-            self.scrollView.contentOffset=CGPointMake(currentBtn.x ,0);
+        if (self.currentIndex!=currentIndex) {
+            self.currentIndex=currentIndex;
+            
+            JSChannelView *currentBtn=self.scrollView.subviews[self.currentIndex];
+            self.lineView.width=currentBtn.width;
+            self.lineView.x=currentBtn.x;
+            if (currentBtn.x>screenW || scrollView.contentOffset.x/self.channelAyyay.count<screenW) {
+                self.scrollView.contentOffset=CGPointMake(currentBtn.x ,0);
+            }
+            
+            [currentBtn setSelected:YES];
+            currentBtn.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"activity_card_bj3"]];
+            self.preBtn.backgroundColor =[UIColor whiteColor];
+            self.preBtn.selected =NO;
+            self.preBtn =currentBtn;
         }
-        
-        [currentBtn setSelected:YES];
-        currentBtn.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"activity_card_bj3"]];
-        self.preBtn.backgroundColor =[UIColor whiteColor];
-        self.preBtn.selected =NO;
-        self.preBtn =currentBtn;
-    }
+
+   
     
     
 //    }];

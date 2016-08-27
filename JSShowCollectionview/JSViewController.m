@@ -30,7 +30,7 @@
 //        self.view.backgroundColor=[UIColor purpleColor];
     
     
-//    self.automaticallyAdjustsScrollViewInsets=NO;
+    self.automaticallyAdjustsScrollViewInsets=NO;
     
 
     
@@ -41,7 +41,7 @@
 //    [self.view addSubview:self.JSManager];
     
     JSViewManager *JSManager=[JSViewManager managerWithChannelAyyay:channelAyyay];
-    JSManager.frame=CGRectMake(0,0, screenW, screenH);
+    JSManager.frame=CGRectMake(0,64, screenW, screenH-64);
     JSManager.layoutStyle=JSLayoutNone;
 //    JSManager.delegate=self;
     [JSManager CollectionViewManager];

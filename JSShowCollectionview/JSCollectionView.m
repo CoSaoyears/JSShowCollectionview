@@ -58,7 +58,7 @@
     UICollectionViewCell *cell=[collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
     
     UITableView *tableView=[[UITableView alloc]init];
-    tableView.frame=CGRectMake(0, 0,self.bounds.size.width, self.bounds.size.height);
+    tableView.frame=CGRectMake(0, 0,self.bounds.size.width, self.bounds.size.height-116);
     tableView.delegate=self;
     tableView.dataSource=self;
     tableView.tableFooterView=[UIView new];
@@ -73,32 +73,40 @@
 //正在滚动
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
     
-    JSChannelView *nextBtn = nil;
     
-    NSArray *array=[self.collectionView indexPathsForVisibleItems];
-    
-    if ([self.jSdelegate respondsToSelector:@selector(JSScrollViewDidScroll:)]) {
-        [self.jSdelegate JSScrollViewDidScroll:scrollView];
-    }
-//    ZXLog(@"%@",scrollView);
-  
-    for (NSIndexPath *indexPath in array) {
-        if (indexPath.item !=self.currentIndex) {
-            nextBtn=self.scrollView.subviews[indexPath.item];
-            break;
+    if ([@"JSCollectionView" isEqual:NSStringFromClass([scrollView class])]) {
+        JSChannelView *nextBtn = nil;
+        
+        
+        NSArray *array=[self.collectionView indexPathsForVisibleItems];
+        
+        if ([self.jSdelegate respondsToSelector:@selector(JSScrollViewDidScroll:)]) {
+            [self.jSdelegate JSScrollViewDidScroll:scrollView];
         }
+        //    ZXLog(@"%@",scrollView);
+        
+        for (NSIndexPath *indexPath in array) {
+            if (indexPath.item !=self.currentIndex) {
+                nextBtn=self.scrollView.subviews[indexPath.item];
+                break;
+            }
+        }
+        
+        if (nextBtn==nil) {
+            return;
+        }
+ 
     }
     
-    if (nextBtn==nil) {
-        return;
-    }
-
+   
 }
 
 //停止滚动
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
-    if ([self.jSdelegate respondsToSelector:@selector(JSCollectionViewDidEndDecelerating:)]) {
-        [self.jSdelegate JSCollectionViewDidEndDecelerating:scrollView];
+    if ([@"JSCollectionView" isEqual:NSStringFromClass([scrollView class])]) {
+     if ([self.jSdelegate respondsToSelector:@selector(JSCollectionViewDidEndDecelerating:)]) {
+         [self.jSdelegate JSCollectionViewDidEndDecelerating:scrollView];
+     }
     }
     
 }
@@ -139,7 +147,7 @@
 
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.channelAyyay.count;
+    return 30;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{

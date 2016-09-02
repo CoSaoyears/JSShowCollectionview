@@ -111,6 +111,41 @@
     
 }
 
+// 指定显示  停止 有动画才执行
+-(void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView{
+    if ([@"JSCollectionView" isEqual:NSStringFromClass([scrollView class])]) {
+        if ([self.jSdelegate respondsToSelector:@selector(JSScrollViewDidEndScrollingAnimation:)]) {
+            [self.jSdelegate JSScrollViewDidEndScrollingAnimation:scrollView];
+        }
+    }
+  
+}
+
+
+
+- (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath{
+    if ([@"JSCollectionView" isEqual:NSStringFromClass([collectionView class])]) {
+        if ([self.jSdelegate respondsToSelector:@selector(JSCollectionView:willDisplayCell:forItemAtIndexPath:)]) {
+            [self.jSdelegate JSCollectionView:collectionView willDisplayCell:cell forItemAtIndexPath:indexPath];
+        }
+    }
+}
+
+
+
+- (void)collectionView:(UICollectionView *)collectionView didEndDisplayingCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath{
+    if ([@"JSCollectionView" isEqual:NSStringFromClass([collectionView class])]) {
+        if ([self.jSdelegate respondsToSelector:@selector(JSCollectionView:didEndDisplayingCell:forItemAtIndexPath:)]) {
+            [self.jSdelegate JSCollectionView:collectionView didEndDisplayingCell:cell forItemAtIndexPath:indexPath];
+        }
+    }
+}
+
+
+
+
+
+
 //定义每个UICollectionViewCell 的大小
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -136,7 +171,7 @@
 //判断现在点中了个
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    ZXLog(@"");
 }
 
 // 取消选中

@@ -19,6 +19,11 @@ typedef NS_OPTIONS(NSInteger, JSLayoutStyle) {
 };
 
 
+typedef NS_OPTIONS(NSInteger,switchAnimated){
+    AnimatedNo        = 0,
+    AnimatedYES       = 1 << 1,
+};
+
 @protocol JSViewManagerDelegate <NSObject>
 
 -(UICollectionViewCell *)JSCollectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath;
@@ -74,8 +79,13 @@ typedef NS_OPTIONS(NSInteger, JSLayoutStyle) {
  *  设置到了显示边缘多显示多少个
  */
 @property (nonatomic,assign)CGFloat accordingToSome;
-
-
+/**
+ *  当前显示的按钮
+ */
 @property (nonatomic,weak)JSChannelView *currentBtn;
+/**
+ *  点击按钮 是否需要动画显示
+ */
+@property (nonatomic,assign)switchAnimated  animated;
 
 @end

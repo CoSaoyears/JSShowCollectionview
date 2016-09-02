@@ -109,19 +109,47 @@
     sender.selected =YES;
     self.preBtn =sender;
     
-    [self.JSColleView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:tag inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+    [self.JSColleView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:tag inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:_animated];
 }
 
 /**
  *  正在滚动
  */
 -(void)JSScrollViewDidScroll:(UIScrollView *)scrollView{
-
-//    NSInteger currentIndex =scrollView.contentOffset.x / scrollView.bounds.size.width;
-//    if (self.currentIndex!=currentIndex) {
-        self.lineView.x=scrollView.contentOffset.x/self.channelAyyay.count;
-//    }
+    self.lineView.x=scrollView.contentOffset.x/self.channelAyyay.count;
 }
+
+/**
+ *  指定显示的 并且有动画
+ */
+-(void)JSScrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView{
+    NSInteger currentIndex =scrollView.contentOffset.x / scrollView.bounds.size.width;
+    [self clickOnTheDisplayIndex:currentIndex];
+}
+
+/**
+ *  指定显示的 没有动画
+ *
+ */
+- (void)JSCollectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath{
+    NSInteger currentIndex =collectionView.contentOffset.x / collectionView.bounds.size.width;
+    [self clickOnTheDisplayIndex:currentIndex];
+
+}
+
+/**
+ *  用户是点击按钮
+ *
+ *  @param index 点击的下标  或者是要显示的
+ */
+-(void)clickOnTheDisplayIndex:(NSInteger)currentIndex{
+    JSChannelView *currentBtn=self.scrollView.subviews[currentIndex];
+    self.currentBtn=currentBtn;
+    self.lineView.width=_currentBtn.width;
+    self.lineView.x=_currentBtn.x;
+}
+
+
 #define screenW [UIScreen mainScreen].bounds.size.width
 -(void)JSCollectionViewDidEndDecelerating:(UIScrollView *)scrollView{
     
@@ -130,7 +158,6 @@
     NSInteger currentIndex =scrollView.contentOffset.x / scrollView.bounds.size.width;
     
     self.accordingToSome=40;
-    
     
     if (self.currentIndex!=currentIndex) {
         JSChannelView *currentBtn=self.scrollView.subviews[currentIndex];

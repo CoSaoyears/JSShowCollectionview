@@ -27,7 +27,11 @@
 
 -(void)JSCollectionViewDidEndDecelerating:(UIScrollView *)scrollView;
 -(void)JSScrollViewDidScroll:(UIScrollView *)scrollView;
+-(void)JSScrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView;
 
+- (void)JSCollectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath;
+
+- (void)JSCollectionView:(UICollectionView *)collectionView didEndDisplayingCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath;
 @end
 
 //@protocol JSTableViewDelegate  <NSObject>

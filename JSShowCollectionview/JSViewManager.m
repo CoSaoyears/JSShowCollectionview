@@ -116,13 +116,10 @@
  *  正在滚动
  */
 -(void)JSScrollViewDidScroll:(UIScrollView *)scrollView{
-//    if (self.layoutStyle==JSLayoutNone) {
 
-
-        
-//    }else if (self.layoutStyle==JSLayoutCenter){
-
-    self.lineView.x=scrollView.contentOffset.x/self.channelAyyay.count;
+//    NSInteger currentIndex =scrollView.contentOffset.x / scrollView.bounds.size.width;
+//    if (self.currentIndex!=currentIndex) {
+        self.lineView.x=scrollView.contentOffset.x/self.channelAyyay.count;
 //    }
 }
 #define screenW [UIScreen mainScreen].bounds.size.width
@@ -130,28 +127,43 @@
     
 //    [UIView animateWithDuration:3 animations:^{
     
-        NSInteger currentIndex =scrollView.contentOffset.x / scrollView.bounds.size.width;
+    NSInteger currentIndex =scrollView.contentOffset.x / scrollView.bounds.size.width;
+    
+    self.accordingToSome=40;
+    
+    
+    if (self.currentIndex!=currentIndex) {
+        JSChannelView *currentBtn=self.scrollView.subviews[currentIndex];
+        self.currentBtn=currentBtn;
         
-        if (self.currentIndex!=currentIndex) {
-            self.currentIndex=currentIndex;
+        self.lineView.width=currentBtn.width;
+        self.lineView.x=currentBtn.x;
+        
+        if (currentBtn.x>screenW || scrollView.contentOffset.x/self.channelAyyay.count>screenW || self.currentIndex>currentIndex) {
             
-            JSChannelView *currentBtn=self.scrollView.subviews[self.currentIndex];
-            self.lineView.width=currentBtn.width;
-            self.lineView.x=currentBtn.x;
-            if (currentBtn.x>screenW || scrollView.contentOffset.x/self.channelAyyay.count<screenW) {
-                self.scrollView.contentOffset=CGPointMake(currentBtn.x ,0);
+            CGFloat span=0.0;
+            
+            if (currentIndex!=0) {
+              span=currentBtn.x-self.accordingToSome;
+            }else{
+                span=currentBtn.x;
             }
-            
-            [currentBtn setSelected:YES];
-            currentBtn.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"activity_card_bj3"]];
-            self.preBtn.backgroundColor =[UIColor whiteColor];
-            self.preBtn.selected =NO;
-            self.preBtn =currentBtn;
+            self.scrollView.contentOffset=CGPointMake(span ,0);
         }
+        
+        [currentBtn setSelected:YES];
+        currentBtn.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"activity_card_bj3"]];
+        self.preBtn.backgroundColor =[UIColor whiteColor];
+        self.preBtn.selected =NO;
+        self.preBtn =currentBtn;
+        
+        self.currentIndex=currentIndex;
+ 
+    }else{
+        self.lineView.width=_currentBtn.width;
+        self.lineView.x=_currentBtn.x;
+    }
 
-   
-    
-    
 //    }];
     
 

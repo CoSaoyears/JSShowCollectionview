@@ -42,10 +42,12 @@
     
     JSViewManager *JSManager=[JSViewManager managerWithChannelAyyay:channelAyyay];
     JSManager.frame=CGRectMake(0,64, screenW, screenH-64);
+    [self.view addSubview:JSManager];
+    
     JSManager.layoutStyle=JSLayoutNone;
 //    JSManager.delegate=self;
     [JSManager CollectionViewManager];
-    [self.view addSubview:JSManager];
+    
 
 }
 

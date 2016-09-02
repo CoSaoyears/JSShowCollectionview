@@ -70,5 +70,12 @@ typedef NS_OPTIONS(NSInteger, JSLayoutStyle) {
  *  滑动线颜色
  */
 @property (nonatomic,weak)UIColor *lineColor;
+/**
+ *  设置到了显示边缘多显示多少个
+ */
+@property (nonatomic,assign)CGFloat accordingToSome;
+
+
+@property (nonatomic,weak)JSChannelView *currentBtn;
 
 @end
